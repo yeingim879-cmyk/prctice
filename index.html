@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>What is Bitcoin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css"
+    />
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Mining Overlay -->
+    <div id="mining-overlay" aria-hidden="true">
+      <div class="mining-window">
+        <div class="mining-header">
+          <div class="mining-title">Mining Block</div>
+          <div class="mining-pill">
+            <span id="overlay-block-label">#0001</span>
+            <span>PoW</span>
+          </div>
+        </div>
+        <div class="mining-body">
+          <div>
+            <div class="mining-label">Nonce</div>
+            <div id="overlay-nonce" class="mining-value nonce-value">
+              00000000
+            </div>
+            <div class="mining-label" style="margin-top: 8px">Hash</div>
+            <div id="overlay-hash" class="mining-value hash-value">
+              0000000000000000000000000000000000000000000000000000000000000000
+            </div>
+          </div>
+          <div>
+            <div class="mining-label">Difficulty</div>
+            <div class="difficulty-stars">★★★☆☆</div>
+            <div class="mining-label" style="margin-top: 8px">Target</div>
+            <div id="overlay-target" class="mining-value">
+              0000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+            </div>
+          </div>
+        </div>
+        <div class="mining-status">
+          <div class="status-text" id="overlay-status">
+            Status: <span>Solving hash puzzle…</span>
+          </div>
+          <div style="font-size: 10px; color: var(--text-muted)">
+            PoW: SHA-256
+          </div>
+        </div>
+        <div class="mining-bar">
+          <div id="overlay-bar-fill" class="mining-bar-fill"></div>
+        </div>
+        <div class="mining-hint">Your click = your hash power.</div>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+      <div class="logo">
+        <span class="logo-dot"></span>
+        <span>MINING.ORG</span>
+      </div>
+      <nav>
+        <button class="nav-link active" data-target="block-mining101">
+          채굴
+        </button>
+        <button class="nav-link" data-target="block-pow">PoW 매커니즘</button>
+        <button class="nav-link" data-target="block-hardware">채굴장비</button>
+        <button class="nav-link" data-target="block-economics">채굴경제</button>
+        <button class="nav-link" data-target="block-energy">에너지&논쟁</button>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+      <!-- Hero / Genesis Block -->
+      <section class="hero">
+        <div>
+          <div class="hero-tag">
+            <span class="hero-tag-dot"></span>
+            <span>Genesis Block · Experiential Web</span>
+          </div>
+          <h1 class="hero-title">
+            You don’t just read about Bitcoin mining.<br />
+            You mine this site.
+          </h1>
+          <p class="hero-sub">
+            메뉴를 클릭할 때마다 작업증명 (Proof of Work)이 실행됩니다.
+          </p>
+          <div class="hero-scroll-hint">
+            스크롤을 하거나 메뉴를 눌러 지금 채굴 경험을 시작하세요.
+          </div>
+        </div>
+
+        <div class="hero-terminal">
+          <div class="hero-terminal-header">
+            <div class="hero-dots">
+              <span class="hero-dot red"></span>
+              <span class="hero-dot yellow"></span>
+              <span class="hero-dot green"></span>
+            </div>
+            <div class="hero-terminal-title">/node/01/console</div>
+          </div>
+          <div class="hero-terminal-body">
+            <div style="color: var(--text-muted); margin-bottom: 4px">
+              $ bitcoind --mine
+            </div>
+            <div style="color: var(--text-muted); margin-bottom: 6px">
+              listening for new transactions…
+            </div>
+            <div class="hash-line" id="hero-hash-line">
+              hash:
+              0000000000000000000000000000000000000000000000000000000000000000
+            </div>
+            <div
+              style="
+                margin-top: 10px;
+                font-size: 11px;
+                color: var(--text-muted);
+              "
+            >
+              tip: try clicking
+              <span style="color: var(--accent)">PoW Mechanism</span> to see the
+              mining overlay.
+            </div>
+            <div class="hero-hint">
+              <span class="hero-arrow">▶</span>
+              <span>your interaction = “proof of understanding”</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Block Sections -->
+      <section class="sections">
+        <!-- Block 1 -->
+        <article
+          id="block-mining101"
+          class="block-section active"
+          data-block-index="1"
+        >
+          <div class="block-inner">
+            <div>
+              <div class="block-meta">
+                <span
+                  ><span class="block-meta-label">Block</span>#0001 Mining
+                  101</span
+                >
+                <span
+                  ><span class="block-meta-label">Role</span>Digital
+                  accountant</span
+                >
+              </div>
+              <h2 class="block-title">
+                왜 비트코인은 “채굴 Mining” 이라고 부를까?
+              </h2>
+              <p class="block-sub">
+                금을 캐려면 장비 · 시간 · 에너지가 들어가고, 점점 더 캐기
+                어려워집니다. 비트코인도 새 코인을 얻으려면 실제 연산 자원(전기,
+                기계)을 태워야 해서 “채굴”이라는 비유를 씁니다.
+              </p>
+              <div class="block-body">
+                <p>
+                  비트코인은 은행이 없는 시스템입니다. 그래서 누군가는 모든
+                  거래를 대신 검증해야합니다.
+                </p>
+                <ul>
+                  <li>보낸 사람이 정말 그 코인을 가지고 있는지?</li>
+                  <li>같은 코인을 두 번 쓰는 것은 아닌지?</li>
+                  <li>거래가 올마르게 서명되고, 규칙을 지키는지?</li>
+                </ul>
+                <p style="margin-top: 10px">
+                  이 역할을 하는 사람이 바로 ‘채굴자(Miner)’입니다. 채굴자는
+                  여러 거래를 모아서 하나의 블록(block)을 만들고, 서로 경쟁해서
+                  블록을 체인에 붙이려 합니다.
+                </p>
+                <p>
+                  이 사이트에서는 당신이 메뉴를 누를 때마다, 새로운 정보가
+                  하나의 ‘블록’처럼 채굴되어 당신만의 학습 체인에 차곡차곡
+                  쌓입니다.
+                </p>
+              </div>
+            </div>
+            <div class="block-diagram">
+              <div class="block-diagram-title">Conceptual diagram</div>
+              <pre>
+transactions → [  block of records  ] → blockchain (global ledger)
+                    ▲                  ▲
+                    │                  │
+                 users             miners (work, energy)</pre
+              >
+            </div>
+          </div>
+        </article>
+
+        <!-- Block 2 -->
+        <article id="block-pow" class="block-section" data-block-index="2">
+          <div class="block-inner">
+            <div>
+              <div class="block-meta">
+                <span
+                  ><span class="block-meta-label">Block</span>#0002 PoW</span
+                >
+                <span><span class="block-meta-label">Algo</span>SHA-256</span>
+              </div>
+              <h2 class="block-title">작업 증명 : 해시퍼즐</h2>
+              <p class="block-sub">
+                채굴자들은 ‘논스(nonce)’라고 불리는 작은 숫자를 계속 바꾸면서,
+                블록의 해시값이 네트워크 전체에서 정해진 목표값을 만족할 때까지
+                반복합니다.
+              </p>
+              <div class="block-body">
+                <p>
+                  해시는 데이터를 식별하는<strong
+                    >복제 불가능한 디지털 지문</strong
+                  >과 같습니다. 원본 데이터에서 아주 미세한 부분(글자 하나, 점
+                  하나)이라도 수정되면, 그 결과값인 해시는 이전과는 전혀 다른
+                  형태로 나타납니다.
+                </p>
+                <p>
+                  작업 증명(Proof of Work) 방식에서 채굴자들은 반드시 특정
+                  개수의 0으로 시작하는 해시값을 찾아내야 합니다. 이를 위한
+                  유일한 방법은 초당 수십억 번의 논스(nonce)값을 대입해 보는
+                  것뿐입니다.
+                </p>
+                <ul>
+                  <li>
+                    <strong>블록 헤더 가져오기</strong>: 현재 채굴할 블록의 핵심
+                    정보(헤더)를 준비합니다.
+                  </li>
+                  <li>
+                    <strong>논스(nonce) 값 선택</strong>: 해시값을 바꾸기 위한
+                    임의의 숫자인 '논스'를 고릅니다.
+                  </li>
+                  <li>
+                    <strong>해시 연산</strong>해시 연산: 블록 헤더와 논스를
+                    결합하여 해시값을 계산합니다.
+                  </li>
+                  <li>
+                    <strong>목표값 비교</strong>: 계산된 해시값이 네트워크 설정
+                    목표치(Target)보다 낮은지 확인합니다.
+                  </li>
+                </ul>
+                <p style="margin-top: 10px">
+                  이 사이트에서는 메뉴를 클릭할 때마다 새로운 '지식 블록'을
+                  승인하기 위한 짧은 애니메이션 형태의 해시 탐색 과정이
+                  실행됩니다.
+                </p>
+              </div>
+            </div>
+            <div class="block-diagram">
+              <div class="block-diagram-title">Hash search loop</div>
+              <pre>
+while (hash &gt; target) {
+  nonce++
+  hash = SHA256(blockHeader || nonce)
+}</pre
+              >
+            </div>
+          </div>
+        </article>
+
+        <!-- Block 3 -->
+        <article id="block-hardware" class="block-section" data-block-index="3">
+          <div class="block-inner">
+            <div>
+              <div class="block-meta">
+                <span
+                  ><span class="block-meta-label">Block</span>#0003
+                  Hardware</span
+                >
+                <span><span class="block-meta-label">Era</span>ASIC farms</span>
+              </div>
+              <h2 class="block-title">CPU에서 ASIC 채굴 농장까지</h2>
+              <p class="block-sub">
+                초창기 비트코인은 노트북으로도 채굴할 수 있었습니다. 하지만
+                오늘날의 채굴은 전용 장비로 가득 찬 대형 창고에서 이루어집니다.
+              </p>
+              <div class="block-body">
+                <p>
+                  네트워크가 성장함에 따라 채굴자들은 다음과 같은 장비들을
+                  사용하기 시작했습니다:
+                </p>
+                <ul>
+                  <li>
+                    <strong>하드웨어 진화</strong>: CPU → GPU → FPGA → ASIC
+                    (맞춤형 칩)
+                  </li>
+                  <li>
+                    <strong>대규모 시설</strong>: 전기료가 저렴하고 냉각에
+                    유리한 지역에 설치된 거대한 장비 랙
+                  </li>
+                  <li>
+                    <strong>마이닝 풀</strong>: 보상을 공정하게 나누기 위한 채굴
+                    협동조합
+                  </li>
+                </ul>
+                <p style="margin-top: 10px">
+                  더 효율적인 채굴을 위해 하드웨어는 비약적으로 발전했고,
+                  채굴자들은 수익을 극대화하기 위해 전기료가 싸고 시원한 곳으로
+                  모여 대규모 시설을 구축게 되었습니다. 해시 경쟁이 치열해질수록
+                  채굴은 더 이상 개인 단위가 아닌, 하나의 거대한 산업이 되어가고
+                  있습니다.
+                </p>
+              </div>
+            </div>
+            <div class="block-diagram">
+              <div class="block-diagram-title">Performance evolution</div>
+              <pre>
+CPU  →  ~10 MH/s
+GPU  →  ~100 MH/s – 1 GH/s
+ASIC →  TH/s – PH/s
+
+🏠  home
+🏭  industrial farms</pre
+              >
+            </div>
+          </div>
+        </article>
+
+        <!-- Block 4 -->
+        <article
+          id="block-economics"
+          class="block-section"
+          data-block-index="4"
+        >
+          <div class="block-inner">
+            <div>
+              <div class="block-meta">
+                <span
+                  ><span class="block-meta-label">Block</span>#0004
+                  Economics</span
+                >
+                <span
+                  ><span class="block-meta-label">Key</span>Cost vs reward</span
+                >
+              </div>
+              <h2 class="block-title">채굴 수익성: '공짜 돈' 그 이상의 가치</h2>
+              <p class="block-sub">
+                익은 보상과 가격에 좌우되지만, 비용은 주로 전기료와 하드웨어에서
+                발생합니다.
+              </p>
+              <div class="block-body">
+                <p>기본적인 채굴 경제 구조:</p>
+                <ul>
+                  <li>
+                    <strong>수익(Revenue)</strong> = 블록 보상 + 거래 수수료
+                  </li>
+                  <li><strong>비용</strong> = 전기료 + 하드웨어 + 유지보수</li>
+                  <li>
+                    <strong>리스크</strong> = 가격 폭락, 채굴 난이도 상승, 규제
+                    리스크
+                  </li>
+                </ul>
+                <p style="margin-top: 10px">
+                  약 4년마다 돌아오는 <strong>반감기</strong>는 블록 보상을
+                  절반으로 줄입니다. 이는 새로운 공급량이 감소되게 됩니다. 그
+                  결과 채굴자들이 더 효율적 채굴을 해야하고 그렇지 못하다면
+                  시장에서 밀려나게 되겠지요.
+                </p>
+                <p>
+                  이 사이트에서 여러분의 '비용'은 집중력과 호기심이며, 그에 따른
+                  '보상'은 비트코인에 대한 깊은 이해입니다.^^
+                </p>
+              </div>
+            </div>
+            <div class="block-diagram">
+              <div class="block-diagram-title">Very simple model</div>
+              <pre>
+daily_profit =
+  (btc_mined_per_day * btc_price)
+  - daily_electricity_cost
+  - hardware_amortization</pre
+              >
+            </div>
+          </div>
+        </article>
+
+        <!-- Block 5 -->
+        <article id="block-energy" class="block-section" data-block-index="5">
+          <div class="block-inner">
+            <div>
+              <div class="block-meta">
+                <span
+                  ><span class="block-meta-label">Block</span>#0005 Energy</span
+                >
+                <span
+                  ><span class="block-meta-label">Topic</span>Energy &
+                  climate</span
+                >
+              </div>
+              <h2 class="block-title">
+                에너지, 탄소 배출, 그리고 채굴을 둘러싼 논쟁
+              </h2>
+              <p class="block-sub">
+                비트코인을 안전하게 지켜주는 핵심 요소인 '방대한 연산'은, 동시에
+                에너지 소비에 대한 논란을 불러일으키는 원인이기도 합니다.
+              </p>
+              <div class="block-body">
+                <p>주요 비판 내용:</p>
+                <ul>
+                  <li>높은 총 전력 소비량</li>
+                  <li>화석 연료 사용으로 인한 탄소 배출</li>
+                  <li>지역 전력망에 가해지는 과부하</li>
+                </ul>
+                <p style="margin-top: 10px">대응 및 해결책:</p>
+                <ul>
+                  <li>재생에너지 사용 확대</li>
+                  <li>수력, 풍력, 태양광이 풍부한 지역으로 채굴 시설 이동</li>
+                  <li>
+                    채굴 효율성 개선 및 기술 발전-대안적인 합의 메커니즘(예:
+                    지분 증명, PoS) 연구
+                  </li>
+                </ul>
+                <p style="margin-top: 10px">
+                  비트코인의 보안을 지탱하는 강력한 연산 능력은 양날의 검과
+                  같습니다. 엄청난 에너지를 소모하기 때문이죠. 환경론자들은
+                  과도한 전력 소모와 탄소 발자국, 그리고 지역 전력 수급에 주는
+                  부담을 지적합니다. 반면, 채굴 업계는 단순히 에너지를 쓰기만
+                  하는 것이 아니라 남는 재생 에너지를 소비해 에너지 효율을
+                  높이거나, 친환경 에너지 산지로 거점을 옮기는 등 해법을 찾고
+                  있습니다. 나아가 더 효율적인 합의 방식인 '지분 증명'으로의
+                  전환 가능성도 논의되고 있습니다. 에너지 소모라는 대가가
+                  정당한지에 대한 논쟁은 계속되겠지만, 이 비용이 있기에
+                  비트코인의 보안이 물리적인 신뢰를 얻는다는 사실만큼은
+                  명확합니다.
+                </p>
+              </div>
+            </div>
+            <div class="block-diagram">
+              <div class="block-diagram-title">Tug of war</div>
+              <pre>
+security  ⇄  energy
+
+more security → more cost
+more efficiency → less waste
+
+design question:
+“how much work is enough?”</pre
+              >
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <!-- Chain Progress -->
+    <div id="chain-progress">
+      <span class="chain-label">Your chain</span>
+      <!-- chips are injected by JS -->
+    </div>
+
+    <script>
+      // ========== Helper functions ==========
+      function randomHex(length) {
+        const chars = "0123456789abcdef";
+        let out = "";
+        for (let i = 0; i < length; i++) {
+          out += chars[Math.floor(Math.random() * chars.length)];
+        }
+        return out;
+      }
+
+      function padNumber(num, width) {
+        const str = String(num);
+        return str.length >= width ? str : "0".repeat(width - str.length) + str;
+      }
+
+      // ========== DOM Elements ==========
+      const navLinks = Array.from(document.querySelectorAll(".nav-link"));
+      const sections = Array.from(document.querySelectorAll(".block-section"));
+      const chainProgress = document.getElementById("chain-progress");
+
+      const overlay = document.getElementById("mining-overlay");
+      const overlayBlockLabel = document.getElementById("overlay-block-label");
+      const overlayNonce = document.getElementById("overlay-nonce");
+      const overlayHash = document.getElementById("overlay-hash");
+      const overlayTarget = document.getElementById("overlay-target");
+      const overlayStatus = document.getElementById("overlay-status");
+      const overlayBarFill = document.getElementById("overlay-bar-fill");
+      const heroHashLine = document.getElementById("hero-hash-line");
+
+      let isMining = false;
+      let heroHashTimer = null;
+
+      // ========== Build chain chips ==========
+      const chainChips = [];
+      (function initChainChips() {
+        const frag = document.createDocumentFragment();
+        sections.forEach((section, idx) => {
+          if (idx > 0) {
+            const divider = document.createElement("span");
+            divider.className = "chain-divider";
+            divider.textContent = "—";
+            frag.appendChild(divider);
+          }
+          const chip = document.createElement("span");
+          chip.className = "chain-chip";
+          chip.dataset.target = section.id;
+          chip.textContent = "#" + padNumber(idx + 1, 4);
+          chainChips.push(chip);
+          frag.appendChild(chip);
+        });
+        chainProgress.appendChild(frag);
+        updateChainState(sections[0].id); // set initial state
+      })();
+
+      function updateChainState(activeId) {
+        chainChips.forEach((chip) => {
+          const isActive = chip.dataset.target === activeId;
+          const isMined =
+            sections.findIndex((sec) => sec.id === chip.dataset.target) <=
+            sections.findIndex((sec) => sec.id === activeId);
+          chip.classList.toggle("active", isActive);
+          chip.classList.toggle("mined", isMined);
+        });
+      }
+
+      // ========== Mining overlay logic ==========
+      function runMiningAnimation(targetId) {
+        if (isMining) return;
+        isMining = true;
+
+        // find block index based on section order
+        const sectionIndex = sections.findIndex((sec) => sec.id === targetId);
+        const blockNumber = padNumber(sectionIndex + 1, 4);
+        const navLabel =
+          navLinks
+            .find((l) => l.dataset.target === targetId)
+            ?.textContent.trim() || "Block";
+
+        overlayBlockLabel.textContent = "#" + blockNumber;
+        overlayTarget.textContent = "0000" + randomHex(60);
+        overlayStatus.innerHTML = "Status: <span>Solving hash puzzle…</span>";
+        overlayBarFill.style.width = "0%";
+
+        let nonce = Math.floor(Math.random() * 1000000);
+        overlayNonce.textContent = padNumber(nonce, 8);
+        overlayHash.textContent = randomHex(64);
+
+        overlay.classList.add("active");
+        overlay.setAttribute("aria-hidden", "false");
+
+        const startTime = performance.now();
+        const duration = 1100; // ms
+        const interval = 50;
+
+        const timer = setInterval(() => {
+          nonce += Math.floor(Math.random() * 5000) + 1;
+          overlayNonce.textContent = padNumber(nonce, 8);
+          overlayHash.textContent = randomHex(64);
+          const elapsed = performance.now() - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          overlayBarFill.style.width = (progress * 100).toFixed(0) + "%";
+        }, interval);
+
+        setTimeout(() => {
+          clearInterval(timer);
+          // fake "valid hash" with leading zeros
+          const zeros = 4;
+          overlayHash.textContent = "0".repeat(zeros) + randomHex(64 - zeros);
+          overlayStatus.innerHTML =
+            'Status: <span class="status-success">Valid hash found · block accepted</span>';
+          overlayBarFill.style.width = "100%";
+
+          setTimeout(() => {
+            overlay.classList.remove("active");
+            overlay.setAttribute("aria-hidden", "true");
+            showSection(targetId);
+            isMining = false;
+          }, 260);
+        }, duration);
+      }
+
+      // ========== Section switching ==========
+      function showSection(targetId) {
+        sections.forEach((sec) => {
+          sec.classList.toggle("active", sec.id === targetId);
+        });
+        navLinks.forEach((link) => {
+          link.classList.toggle("active", link.dataset.target === targetId);
+        });
+        updateChainState(targetId);
+
+        // scroll to top of main for better UX on mobile
+        const main = document.querySelector("main");
+        if (main) {
+          window.scrollTo({ top: main.offsetTop - 70, behavior: "smooth" });
+        }
+      }
+
+      // ========== Event listeners ==========
+      navLinks.forEach((link) => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          const targetId = link.dataset.target;
+          if (!targetId) return;
+
+          // 이미 활성화된 섹션이면 그냥 무시
+          const currentSection = sections.find((sec) =>
+            sec.classList.contains("active")
+          );
+          if (currentSection && currentSection.id === targetId) return;
+
+          runMiningAnimation(targetId);
+        });
+      });
+
+      // 작은 UX: 체인 칩 클릭해도 이동
+      chainChips.forEach((chip) => {
+        chip.addEventListener("click", () => {
+          const targetId = chip.dataset.target;
+          if (!targetId || isMining) return;
+          runMiningAnimation(targetId);
+        });
+      });
+
+      // ESC로 오버레이 닫기 방지 (마이닝 중 interrupt 안함) – 원하면 구현 가능
+
+      // ========== Hero hash idle animation ==========
+      function startHeroHashAnimation() {
+        if (!heroHashLine) return;
+        heroHashTimer = setInterval(() => {
+          const zeros = Math.random() < 0.3 ? 4 : 2;
+          const hash = "0".repeat(zeros) + randomHex(64 - zeros);
+          heroHashLine.textContent = "hash: " + hash;
+        }, 650);
+      }
+
+      startHeroHashAnimation();
+    </script>
+  </body>
+</html>
